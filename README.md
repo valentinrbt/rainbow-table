@@ -7,7 +7,7 @@ Ce projet est une implémentation complète d'une **Rainbow Table**, une structu
 ## 🖥️ Interface Graphique
 Le projet inclut une interface Swing permettant de configurer la génération des tables et de lancer des recherches de hashs de manière intuitive.
 
-![Interface Rainbow Table](accueil.png) 
+![Interface Rainbow Table](assets/accueil.png) 
 
 ## 🛡️ Fonctionnalités Techniques
 * **Génération de chaînes** : Création de tables personnalisées avec choix de la longueur des chaînes et du nombre de colonnes.
