@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Tables_arc_en_ciel" default="run" basedir=".">
+
+  <!-- Definition des proprietes du projet -->
+  <property name="src.dir" value="src"/>
+  <property name="dist.dir" value="dist"/>
+  <property name="build.dir" value="build"/>
+  <property name="doc.dir" value="doc"/>
+  <property name="main.dir" location="." />
+  <property name="test.dir" value="test"/>
+
+  <!-- Definition du classpath du projet -->
+  <path id="classpath">
+    <fileset dir="${dist.dir}">
+      <include name="junit.jar"/>
+    </fileset>
+    <pathelement location="${build.dir}"/>
+  </path>
+
+  <!-- Initialisation -->
+  <target name="init">
+    <echo message="Initialisation de ${ant.project.name}"/>
+    <delete dir="${build.dir}"/>
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <!-- Compilation des classes du projet -->
+  <target name="compile" depends="init">
+    <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+      <src path="${main.dir}" />
+      <classpath refid="classpath"/>
+    </javac>
+    <javac srcdir="${test.dir}" destdir="${build.dir}" includeantruntime="false">
+      <classpath>
+        <pathelement location="${build.dir}"/>
+        <pathelement location="dist/junit.jar"/>
+        </classpath>
+    </javac>
+  </target>
+
+  <!-- Execution de la classe main -->
+  <target name="run" description="execution" depends="test">
+    <java classname="Main" fork="true">
+      <classpath>
+        <pathelement location="${build.dir}"/>
+      </classpath>
+    </java>
+  </target>
+
+  <!-- Execute les tests du projet -->
+  <target name="test" depends="compile">
+    <junit fork="yes" printsummary="true">
+      <test name="test.Test"/>
+      <classpath>
+        <pathelement location="${build.dir}"/>
+        <pathelement location="dist/junit.jar"/>
+      </classpath>
+    </junit>
+  </target>
+
+  <!-- Génération de la Javadoc -->
+  <target name="javadoc">
+    <javadoc sourcepath="${src.dir}" destdir="${doc.dir}" >
+      <fileset dir="${src.dir}" defaultexcludes="yes">
+        <include name="**/*.java" />
+      </fileset>
+    </javadoc>
+  </target>
+
+  <!-- Création d’une archive JAR -->
+  <target name="packaging" depends="compile">
+    <jar jarfile="${dist.dir}/Tables_arc_en_ciel.jar" basedir="${build.dir}" manifest="Manifest.txt" />
+  </target>
+
+</project>

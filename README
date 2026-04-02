@@ -1,0 +1,28 @@
+
+# Rainbow Table - Projet de L3 informatique
+
+## 🎯 Objectif
+Ce projet est une implémentation complète d'une **Rainbow Table**, une structure de données permettant d'inverser des fonctions de hachage cryptographiques (MD5, SHA-256). L'objectif est d'illustrer le compromis **temps-mémoire** utilisé en cybersécurité pour retrouver des mots de passe à partir de leurs hashs.
+
+## 🖥️ Interface Graphique
+Le projet inclut une interface Swing permettant de configurer la génération des tables et de lancer des recherches de hashs de manière intuitive.
+
+![Interface Rainbow Table](accueil.png) 
+
+## 🛡️ Fonctionnalités Techniques
+* **Génération de chaînes** : Création de tables personnalisées avec choix de la longueur des chaînes et du nombre de colonnes.
+* **Algorithmes de Réduction** : Implémentation de fonctions de réduction pour transformer un hash en texte clair et boucler la chaîne.
+* **Recherche Inverse** : Moteur de recherche capable de retrouver le mot de passe original à partir d'une empreinte numérique.
+* **Gestion des Collisions** : Logique de détection et de traitement des collisions pour optimiser l'efficacité de la table.
+
+## 🚀 Installation et Lancement
+
+```bash
+# 1. Cloner le dépôt
+git clone https://github.com/valentinrbt/rainbow-table
+cd rainbow-table
+
+# 2. Lancer l'application
+# Cette commande compile le code et exécute les tests unitaires avant de lancer l'interface.
+ant run
+```
